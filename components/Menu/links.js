@@ -1,0 +1,38 @@
+export const primaryLinks = [
+  { id: 1, title: "Главная", path: "" },
+  {
+    id: 2,
+    title: "Металлообрабатывающие",
+    alt: "Все",
+    path: "metalworking",
+    child: [
+      { id: 3, title: "Токарные", path: "turning", image:"/images/turning.png" },
+      { id: 4, title: "Фрезерные", path: "milling", image:"/images/milling.png" },
+      { id: 5, title: "Сверлильные", path: "drilling", image:"/images/drilling.png" },
+      { id: 6, title: "Заточные", path: "sharpening", image:"/images/sharpening.png" },
+      { id: 7, title: "Шлифовальные", path: "grinding", image:"/images/grinding.png" },
+      { id: 8, title: "Долбёжные", path: "slotting", image:"/images/slotting.png" },
+      { id: 9, title: "Зубообрабатывающие", path: "gear", image:"/images/gear.png" },
+      { id: 10, title: "Протяжные", path: "lingering", image:"/images/lingering.png" },
+      { id: 11, title: "Расточные", path: "boring", image:"/images/boring.png" },
+      { id: 12, title: "Строгальные", path: "planing", image:"/images/planing.png" },
+      { id: 13, title: "Обрабатывающие центр", path: "machining_center", image:"/images/machining_center.png" },
+    ],
+  },
+  {
+    id: 14,
+    title: "Кузнечно-прессовые",
+    alt: "Все",
+    path: "forgingpress",
+    child: [
+      { id: 15, title: "Гидравлические пресса", path: "hydraulic_press", image:"/images/hydraulic_press.png" },
+      { id: 16, title: "Кривошипные пресса", path: "crank_press", image:"/images/crank_press.png" },
+      { id: 17, title: "Листогибы", path: "sheet_benders", image:"/images/sheet_benders.png" },
+      { id: 18, title: "Молоты", path: "hammers", image:"/images/hammers.png" },
+      { id: 19, title: "Ножницы гильотинные", path: "guillotine_shears", image:"/images/guillotine_shears.png" },
+      { id: 20, title: "Другие", path: "other", image:"/images/other.png" },
+    ],
+  },
+  { id: 21, title: "Запчасти", path: "duplicates", image:"/images/duplicates.png" },
+  { id: 22, title: "О нас", path: "about" },
+];

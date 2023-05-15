@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    flex-flow: column wrap;
+    flex-direction: row;
+    margin-top: 15px;
+    overflow-y: auto;
+}

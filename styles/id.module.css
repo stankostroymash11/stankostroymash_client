@@ -1,0 +1,13 @@
+.wrapp {
+  width: 100%;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+.wrappCard {
+  width: 600px;
+  margin: 0 auto;
+}
+.card {
+  box-sizing: border-box;
+  padding: 15px 15px 0 15px;
+}
