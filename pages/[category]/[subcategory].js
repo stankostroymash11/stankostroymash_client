@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "../../styles/subcategory.module.css";
 import CustomCard from "@/components/CustomCard";
+import { endpoint } from "@/endpoint";
 
 export default function SubCategory({ props }) {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function SubCategory({ props }) {
             return (
               <CustomCard
                 key={item._id}
-                image={`${process.env.NEXT_PUBLIC_API_HOST}${item.photoPrimary}`}
+                image={`${endpoint.url}${item.photoPrimary}`}
                 alt={item.title}
                 title={item.title}
                 shortDescription={item.shortDescription}
@@ -64,7 +65,7 @@ export default function SubCategory({ props }) {
 SubCategory.getInitialProps = async (ctx) => {
   const attr = `?category=${ctx.query.category}&subcategory=${ctx.query.subcategory}`;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}api/getSubCategory${attr}`
+    `${endpoint.url}api/getSubCategory${attr}`
   );
   const data = await res.json().then((res) => res);
   return {

@@ -7,6 +7,7 @@ import { getCookie } from "@/utils/cookies";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { endpoint } from "@/endpoint";
 
 export default function ActBlock({ title, id, category }) {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function ActBlock({ title, id, category }) {
     try {
       axios
         .post(
-          `${process.env.NEXT_PUBLIC_API_HOST}api/delete_item`,
+          `${endpoint.url}api/delete_item`,
           {
             id,
             category,

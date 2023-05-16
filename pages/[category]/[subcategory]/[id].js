@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import ActBlock from "@/components/ActBlock";
 import { getCookie } from "@/utils/cookies";
 import Head from "next/head";
+import { endpoint } from "@/endpoint";
 
 export default function SubCategoryId({ props }) {
   const [images, setImages] = useState([]);
@@ -20,8 +21,8 @@ export default function SubCategoryId({ props }) {
         setImages((images) => [
           ...images,
           {
-            original: `${process.env.NEXT_PUBLIC_API_HOST}${item.substring(1)}`,
-            thumbnail: `${process.env.NEXT_PUBLIC_API_HOST}${item.substring(
+            original: `${endpoint.url}${item.substring(1)}`,
+            thumbnail: `${endpoint.url}${item.substring(
               1
             )}`,
           },
@@ -111,7 +112,7 @@ export default function SubCategoryId({ props }) {
 }
 SubCategoryId.getInitialProps = async (ctx) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}api/getItem/${ctx.query.id}`
+    `${endpoint.url}api/getItem/${ctx.query.id}`
   );
   const data = await res.json().then((res) => res);
   return {

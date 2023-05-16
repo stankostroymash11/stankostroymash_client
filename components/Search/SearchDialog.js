@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Link from "next/link";
+import { endpoint } from "@/endpoint";
 
 export default function SearchDialog({ open, handleClose, result, text }) {
   return (
@@ -41,7 +42,7 @@ export default function SearchDialog({ open, handleClose, result, text }) {
                       >
                         <img
                           style={{ width: "200px", height: "auto" }}
-                          src={`${process.env.NEXT_PUBLIC_API_HOST}${item.photoPrimary}`}
+                          src={`${endpoint.url}${item.photoPrimary}`}
                           alt={item.title}
                           onClick={handleClose}
                         />
@@ -56,7 +57,7 @@ export default function SearchDialog({ open, handleClose, result, text }) {
                       >
                         <img
                           style={{ width: "200px", height: "auto" }}
-                          src={`${process.env.NEXT_PUBLIC_API_HOST}${item.photoPrimary}`}
+                          src={`${endpoint.url}${item.photoPrimary}`}
                           alt={item.title}
                         />
                       </Link>

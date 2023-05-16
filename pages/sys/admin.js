@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import axios from "axios";
 import { getCookie, setCookie } from "@/utils/cookies";
 import { useRouter } from "next/router";
+import { endpoint } from "@/endpoint";
 
 export default function Admin() {
   const [login, setLogin] = useState();
@@ -18,7 +19,7 @@ export default function Admin() {
     const data = new FormData(e.currentTarget);
 
     axios
-      .post(`${process.env.NEXT_PUBLIC_API_HOST}api/auth`, {
+      .post(`${endpoint.url}api/auth`, {
         email: data.get("email"),
         password: data.get("password"),
       })

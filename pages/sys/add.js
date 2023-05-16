@@ -9,6 +9,7 @@ import SelectSubCategoryWidget from "@/components/Widgets/SelectSubCategoryWidge
 import axios from "axios";
 import { useRouter } from "next/router";
 import { getCookie } from "@/utils/cookies";
+import { endpoint } from "@/endpoint";
 
 const maxLengthShortText = 300;
 const maxLengthText = 2000;
@@ -37,7 +38,7 @@ export default function Add() {
     try {
       axios
         .post(
-          `${process.env.NEXT_PUBLIC_API_HOST}api/delete_image`,
+          `${endpoint.url}api/delete_image`,
           {
             image: prop,
           },
@@ -60,7 +61,7 @@ export default function Add() {
       await Array.from(event.target.files).map((item) => {
         const file = new FormData();
         file.append("image", item);
-        fetch(`${process.env.NEXT_PUBLIC_API_HOST}upload`, {
+        fetch(`${endpoint.url}upload`, {
           method: "POST",
           headers: {
             auth: getCookie("token"),
@@ -98,7 +99,7 @@ export default function Add() {
       try {
         axios
           .post(
-            `${process.env.NEXT_PUBLIC_API_HOST}api/add_item`,
+            `${endpoint.url}api/add_item`,
             {
               state,
               shortText,
@@ -120,7 +121,7 @@ export default function Add() {
       try {
         axios
           .post(
-            `${process.env.NEXT_PUBLIC_API_HOST}api/add_item_duplicates`,
+            `${endpoint.url}api/add_item_duplicates`,
             {
               state,
               shortText,
@@ -252,7 +253,7 @@ export default function Add() {
             return (
               <div key={item}>
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_HOST}${str}`}
+                  src={`${endpoint.url}${str}`}
                   style={{ width: "300px", height: "auto", display: "block" }}
                 />
                 <div

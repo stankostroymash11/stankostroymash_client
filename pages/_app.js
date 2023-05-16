@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { useEffect, useState } from "react";
 import { eraseCookie, getCookie } from "@/utils/cookies";
 import axios from "axios";
+import { endpoint } from "@/endpoint";
 
 export default function App({ Component, pageProps }) {
   const [state, setState] = useState(false);
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps }) {
 
   const suc = async () => {
     await axios
-      .post(`${process.env.NEXT_PUBLIC_API_HOST}api/get-me`, {
+      .post(`${endpoint.url}api/get-me`, {
         token: getCookie("token"),
       })
       .then(function (response) {

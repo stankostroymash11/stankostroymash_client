@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import SearchDialog from "./SearchDialog";
 import styles from "../../styles/searchComponent.module.css";
+import { endpoint } from "@/endpoint";
 
 export default function SearchComponent() {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function SearchComponent() {
   const handleClickOpen = useCallback(async () => {
     if (text.length) {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_HOST}api/search?search=${text}`
+        `${endpoint.url}api/search?search=${text}`
       );
       const data = await res.json().then((res) => res);
       setResult(data.result);

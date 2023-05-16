@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import axios from "axios";
 import { getCookie, setCookie } from "@/utils/cookies";
+import { endpoint } from "@/endpoint";
 
 export default function Change() {
     const [oldPassword, setOldPassword] = useState("");
@@ -16,7 +17,7 @@ export default function Change() {
 
     const handleSubmit = () => {
         axios
-            .post(`${process.env.NEXT_PUBLIC_API_HOST}api/change-pass`, {
+            .post(`${endpoint.url}api/change-pass`, {
                 oldPassword: oldPassword,
                 password: password,
                 token: getCookie("token")

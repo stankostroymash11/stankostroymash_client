@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { primaryLinks } from "@/components/Menu/links";
 import CustomCard from "@/components/CustomCard";
+import { endpoint } from "@/endpoint";
 
 export default function Category({ props }) {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function Category({ props }) {
             return (
               <CustomCard
                 key={item._id}
-                image={`${process.env.NEXT_PUBLIC_API_HOST}${item.photoPrimary}`}
+                image={`${endpoint.url}${item.photoPrimary}`}
                 alt={item.title}
                 title={item.title}
                 shortDescription={item.shortDescription}
@@ -57,7 +58,7 @@ export default function Category({ props }) {
 Category.getInitialProps = async (ctx) => {
   const attr = `?category=${ctx.query.category}`;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}api/getCategory${attr}`
+    `${endpoint.url}api/getCategory${attr}`
   );
   const data = await res.json().then((res) => res);
   return {

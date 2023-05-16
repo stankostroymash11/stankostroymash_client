@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { getCookie } from "@/utils/cookies";
 import CategoryWidget from "@/components/Widgets/CategoryWidget";
 import SubCategoryWidget from "@/components/Widgets/SubCategoryWidget";
+import { endpoint } from "@/endpoint";
 
 const maxLengthShortText = 300;
 const maxLengthText = 2000;
@@ -40,7 +41,7 @@ export default function EditId({ props }) {
     try {
       axios
         .post(
-          `${process.env.NEXT_PUBLIC_API_HOST}api/delete_image`,
+          `${endpoint.url}api/delete_image`,
           {
             image: prop,
           },
@@ -63,7 +64,7 @@ export default function EditId({ props }) {
       await Array.from(event.target.files).map((item) => {
         const file = new FormData();
         file.append("image", item);
-        fetch(`${process.env.NEXT_PUBLIC_API_HOST}upload`, {
+        fetch(`${endpoint.url}upload`, {
           method: "POST",
           headers: {
             auth: getCookie("token"),
@@ -100,7 +101,7 @@ export default function EditId({ props }) {
     try {
       axios
         .post(
-          `${process.env.NEXT_PUBLIC_API_HOST}api/edit_item`,
+          `${endpoint.url}api/edit_item`,
           {
             id: props.data._id,
             state,
@@ -237,7 +238,7 @@ export default function EditId({ props }) {
             return (
               <div key={item}>
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_HOST}${str}`}
+                  src={`${endpoint.url}${str}`}
                   style={{ width: "300px", height: "auto", display: "block" }}
                 />
                 <div
@@ -296,13 +297,13 @@ EditId.getInitialProps = async (ctx) => {
   let data = {};
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}api/getItem/${ctx.query.id}`
+    `${endpoint.url}api/getItem/${ctx.query.id}`
   );
   data = await res.json().then((res) => res);
 
   if (!data) {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}api/getItemDuplicates/${ctx.query.id}`
+      `${endpoint.url}api/getItemDuplicates/${ctx.query.id}`
     );
     data = await res.json().then((res) => res);
   }
